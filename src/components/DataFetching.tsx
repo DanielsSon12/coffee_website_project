@@ -5,7 +5,7 @@ import { API_URL_COFFEE } from '@/setting'
 const withDataFetch = (WrapperComponent: any) => {
 	return () => {
 		const [loading, setLoading] = useState(true)
-		const [coffee, setCoffee] = useState()
+		const [coffee, setCoffee] = useState<any>(null)
 
 		const fetchData = async () => {
 			try {
@@ -18,7 +18,7 @@ const withDataFetch = (WrapperComponent: any) => {
 
 				const data = await response.json()
 				setCoffee(data)
-				console.log(data)
+				console.log(JSON.stringify(data))
 			} catch (error) {
 				console.log(error)
 			} finally {

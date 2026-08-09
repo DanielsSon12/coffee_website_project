@@ -1,7 +1,9 @@
+import CoffeeListWithData from './components/CoffeeList'
+
 function App() {
 	return (
 		<>
-			<h1>Coffee Website</h1>
+			<CoffeeListWithData />
 		</>
 	)
 }

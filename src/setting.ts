@@ -1,1 +1,1 @@
-export const API_URL_COFFEE = 'https://fake-coffee-api.vercel.app/api'
+export const API_URL_COFFEE = 'https://api.sampleapis.com/coffee/hot'
