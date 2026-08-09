@@ -6,11 +6,11 @@ const CoffeeList = ({ loading, coffee }: any) => {
 	}
 
 	return (
-		<>
+		<main className="min-h-screen bg-orange-50">
 			<div className="m-auto p-8 text-center">
 				<h1>Coffee Website</h1>
 			</div>
-			<div className="m-auto flex w-6xl cursor-grab items-center overflow-x-auto scroll-smooth">
+			<div className="m-auto flex w-7xl cursor-grab items-center overflow-x-auto scroll-smooth">
 				{coffee.map((item: any) => (
 					<div
 						className="m-5 flex h-auto w-auto flex-none cursor-grab rounded-2xl bg-amber-100 p-0"
@@ -39,7 +39,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 					</div>
 				))}
 			</div>
-		</>
+		</main>
 	)
 }
 
