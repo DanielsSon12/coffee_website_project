@@ -1,23 +1,12 @@
+import 'swiper/css/bundle'
+
 import { motion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { EffectCoverflow } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 import withDataFetch from './DataFetching'
 
 const CoffeeList = ({ loading, coffee }: any) => {
-	const carousel = useRef<HTMLDivElement>(null)
-	const innerCarousel = useRef<HTMLDivElement>(null)
-
-	const [width, setWidth] = useState(0)
-
-	useEffect(() => {
-		if (!carousel.current || !innerCarousel.current) return
-
-		const containerWidth = carousel.current.offsetWidth
-		const contentWidth = innerCarousel.current.scrollWidth
-
-		setWidth(contentWidth - containerWidth)
-	}, [coffee])
-
 	if (loading) {
 		return <h1>Carregando...</h1>
 	}
@@ -27,48 +16,74 @@ const CoffeeList = ({ loading, coffee }: any) => {
 			<div className="m-auto p-8 text-center">
 				<h1>Coffee Website</h1>
 			</div>
-			<motion.div
-				ref={carousel}
-				className="m-auto flex w-full max-w-7xl items-center overflow-hidden scroll-smooth"
-			>
-				<motion.div
-					ref={innerCarousel}
-					className="flex cursor-grab"
-					drag="x"
-					dragConstraints={{ right: 0, left: -width }}
-					dragElastic={0}
-					whileTap={{ cursor: 'grabbing' }}
+
+			<motion.div className="m-auto flex w-full max-w-7xl items-center overflow-hidden">
+				<Swiper
+					modules={[EffectCoverflow]}
+					effect="coverflow"
+					slidesPerView={3}
+					spaceBetween={10}
+					grabCursor={true}
+					className="w-full"
+					breakpoints={{
+						640: {
+							slidesPerView: 1,
+							spaceBetween: 10,
+						},
+						768: {
+							slidesPerView: 2,
+							spaceBetween: 10,
+						},
+						1024: {
+							slidesPerView: 3,
+							spaceBetween: 10,
+						},
+					}}
 				>
 					{coffee.map((item: any) => (
-						<motion.div
-							key={item.id}
-							className="m-5 flex h-auto w-auto flex-none cursor-grab rounded-2xl bg-amber-100 p-0"
-							whileTap={{ cursor: 'grabbing' }}
-						>
-							<div>
-								<img
-									draggable={false}
-									className="pointer-events-none h-105 w-full max-w-xs rounded-l-2xl object-cover"
-									src={item.image}
-									alt={item.title}
-								/>
-							</div>
-							<div>
-								<h2 className="mt-5 text-center text-2xl font-bold text-amber-900">{item.title}</h2>
-								<p className="text-md m-5 w-60 tracking-wider text-gray-800">{item.description}</p>
-								<div className="m-5">
-									<ul className="list-none">
-										{item.ingredients.map((ingredient: any) => (
-											<li className="mt-2 text-sm font-bold tracking-wider text-amber-800">
-												➜ {ingredient}
-											</li>
-										))}
-									</ul>
+						<SwiperSlide key={item.id} className="flex h-auto items-center justify-center">
+							<motion.div
+								className="flex w-full max-w-md cursor-grab rounded-2xl bg-amber-100 p-0"
+								whileTap={{ cursor: 'grabbing' }}
+								initial={{ y: 500 }}
+								animate={{ y: 0 }}
+								transition={{ duration: 0.8 }}
+							>
+								<div className="w-1/2">
+									<img
+										draggable={false}
+										className="pointer-events-none h-72 w-full rounded-l-2xl object-cover"
+										src={item.image}
+										alt={item.title}
+									/>
 								</div>
-							</div>
-						</motion.div>
+
+								<div className="w-1/2">
+									<h2 className="mt-4 text-center text-lg font-bold text-amber-900">
+										{item.title}
+									</h2>
+
+									<p className="m-3 text-justify text-xs tracking-wider text-gray-800">
+										{item.description}
+									</p>
+
+									<div className="m-3">
+										<ul className="list-none">
+											{item.ingredients.map((ingredient: any) => (
+												<li
+													key={ingredient}
+													className="mt-1 text-xs font-bold tracking-wider text-amber-800"
+												>
+													➜ {ingredient}
+												</li>
+											))}
+										</ul>
+									</div>
+								</div>
+							</motion.div>
+						</SwiperSlide>
 					))}
-				</motion.div>
+				</Swiper>
 			</motion.div>
 		</main>
 	)
