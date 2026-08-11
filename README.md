@@ -1,15 +1,17 @@
 # Coffee Website ☕
 
-Projeto de um Website de café, utilizando React, TypeScript, Vite, Tailwind CSS e uma API de café.
+Projeto de um Website de café, utilizando React, TypeScript, Vite, Tailwind CSS, bibliotecas de animação como Framer Motion e Swiper, e uma API de café.
 
 ## 📚 API
 
-Nesse projeto, foi utilizado a API [Fake Coffee API](https://fake-coffee-api.vercel.app) para obter as informações sobre os cafés.
+Nesse projeto, foi utilizado a API [Sample APIs/Coffee](https://sampleapis.com/api-list/coffee) para obter as informações sobre os cafés.
 
 ## 🛠 Tecnologias
 
 - React;
 - TypeScript;
 - Tailwind CSS;
+- Framer Motion;
+- Swiper;
 - Vite;
-- Fake Coffee API.
+- Sample APIs.
