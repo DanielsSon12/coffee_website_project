@@ -5,19 +5,32 @@ import 'swiper/css/pagination'
 import '../index.css'
 
 import { motion } from 'framer-motion'
+import { DotLoader } from 'react-spinners'
 import { register } from 'swiper/element/bundle'
 import { EffectCoverflow } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 register()
 
+import { useEffect, useState } from 'react'
+
 import withDataFetch from './DataFetching'
 
 const CoffeeList = ({ loading, coffee }: any) => {
-	if (loading) {
+	const [showLoading, setShowLoading] = useState(true)
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowLoading(false)
+		}, 1500)
+
+		return () => clearTimeout(timer)
+	}, [])
+
+	if (loading || showLoading) {
 		return (
 			<main className="m-auto flex min-h-screen items-center justify-center bg-orange-50">
-				<h1>Loading...</h1>
+				<DotLoader color="#5E350E" size={100} />
 			</main>
 		)
 	}
