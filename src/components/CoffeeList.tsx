@@ -15,7 +15,11 @@ import withDataFetch from './DataFetching'
 
 const CoffeeList = ({ loading, coffee }: any) => {
 	if (loading) {
-		return <h1>Loading...</h1>
+		return (
+			<main className="m-auto flex min-h-screen items-center justify-center bg-orange-50">
+				<h1>Loading...</h1>
+			</main>
+		)
 	}
 
 	return (
@@ -24,7 +28,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 				<h1>Coffee Website</h1>
 			</div>
 
-			<motion.div className="m-auto flex w-full max-w-7xl items-center overflow-hidden">
+			<div className="m-auto flex w-full max-w-7xl items-center overflow-hidden">
 				<Swiper
 					modules={[EffectCoverflow]}
 					effect="coverflow"
@@ -90,7 +94,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 						</SwiperSlide>
 					))}
 				</Swiper>
-			</motion.div>
+			</div>
 		</main>
 	)
 }
