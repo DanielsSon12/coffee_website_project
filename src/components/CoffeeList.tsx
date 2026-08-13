@@ -1,14 +1,21 @@
+import 'swiper/css'
 import 'swiper/css/bundle'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import '../index.css'
 
 import { motion } from 'framer-motion'
+import { register } from 'swiper/element/bundle'
 import { EffectCoverflow } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
+register()
 
 import withDataFetch from './DataFetching'
 
 const CoffeeList = ({ loading, coffee }: any) => {
 	if (loading) {
-		return <h1>Carregando...</h1>
+		return <h1>Loading...</h1>
 	}
 
 	return (
@@ -39,15 +46,14 @@ const CoffeeList = ({ loading, coffee }: any) => {
 							spaceBetween: 10,
 						},
 					}}
+					pagination={{ clickable: true }}
+					navigation
 				>
 					{coffee.map((item: any) => (
 						<SwiperSlide key={item.id} className="flex h-auto items-center justify-center">
 							<motion.div
 								className="flex w-full max-w-md cursor-grab rounded-2xl bg-amber-100 p-0"
 								whileTap={{ cursor: 'grabbing' }}
-								initial={{ y: 500 }}
-								animate={{ y: 0 }}
-								transition={{ duration: 0.8 }}
 							>
 								<div className="w-1/2">
 									<img
