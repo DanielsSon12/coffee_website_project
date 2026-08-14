@@ -45,6 +45,10 @@ const CoffeeList = ({ loading, coffee }: any) => {
 				<Swiper
 					modules={[EffectCoverflow]}
 					effect="coverflow"
+					// autoplay={{
+					// 	delay: 3000,
+					// 	disableOnInteraction: false,
+					// }}
 					slidesPerView={3}
 					spaceBetween={10}
 					grabCursor={true}
