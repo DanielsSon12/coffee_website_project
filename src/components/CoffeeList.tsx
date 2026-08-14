@@ -8,6 +8,7 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
 import { DotLoader } from 'react-spinners'
 import { register } from 'swiper/element/bundle'
+import { EffectCoverflow } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import coffeeBanner from '../assets/img/coffeeBanner.jpg'
@@ -59,10 +60,21 @@ const CoffeeList = ({ loading, coffee }: any) => {
 						</svg>
 						<div className="relative z-10 m-auto flex w-full max-w-7xl items-center overflow-hidden">
 							<Swiper
-								slidesPerView={3}
-								spaceBetween={30}
+								modules={[EffectCoverflow]}
+								effect="coverflow"
+								pagination={{ clickable: true }}
+								navigation
+								slidesPerView={1}
+								spaceBetween={15}
 								grabCursor={true}
 								className="w-full"
+								coverflowEffect={{
+									rotate: 25,
+									stretch: 20,
+									depth: 350,
+									modifier: 1,
+									slideShadows: false,
+								}}
 								breakpoints={{
 									640: {
 										slidesPerView: 1,
@@ -72,13 +84,11 @@ const CoffeeList = ({ loading, coffee }: any) => {
 										slidesPerView: 2,
 										spaceBetween: 10,
 									},
-									1024: {
+									1289: {
 										slidesPerView: 3,
-										spaceBetween: 10,
+										spaceBetween: 15,
 									},
 								}}
-								pagination={{ clickable: true }}
-								navigation
 							>
 								{coffee.map((item: any) => (
 									<SwiperSlide key={item.id} className="flex h-auto items-center justify-center">

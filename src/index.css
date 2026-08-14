@@ -4,13 +4,17 @@
 .swiper-button-prev {
 	color: rgb(65, 34, 5) !important;
 	border-radius: 100% !important;
-	max-width: 15px !important;
+	max-width: 90px !important;
 	transition: transform ease 0.2s;
+	background-color: rgb(255, 227, 184);
+	padding: 8px;
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
+.swiper-button-next:hover {
 	transform: scale(1.1) translateX(2px);
+}
+.swiper-button-prev:hover {
+	transform: scale(1.1) translateX(-2px);
 }
 
 .swiper-button-next:active,
