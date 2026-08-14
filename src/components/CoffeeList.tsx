@@ -14,7 +14,7 @@ register()
 
 import { useEffect, useState } from 'react'
 
-import withDataFetch from './DataFetching'
+import withDataFetch from './DataFetchingCoffee'
 
 const CoffeeList = ({ loading, coffee }: any) => {
 	const [showLoading, setShowLoading] = useState(true)
@@ -36,19 +36,15 @@ const CoffeeList = ({ loading, coffee }: any) => {
 	}
 
 	return (
-		<main className="min-h-screen bg-orange-50">
-			<div className="m-auto p-8 text-center">
-				<h1>Coffee Website</h1>
+		<main className="min-h-screen bg-orange-100">
+			<div className="mx-auto h-96 w-full overflow-hidden">
+				<img src="" alt="Error" className="h-full w-full object-cover" />
 			</div>
 
 			<div className="m-auto flex w-full max-w-7xl items-center overflow-hidden">
 				<Swiper
 					modules={[EffectCoverflow]}
 					effect="coverflow"
-					// autoplay={{
-					// 	delay: 3000,
-					// 	disableOnInteraction: false,
-					// }}
 					slidesPerView={3}
 					spaceBetween={10}
 					grabCursor={true}
