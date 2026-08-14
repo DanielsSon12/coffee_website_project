@@ -4,7 +4,7 @@ Projeto de um Website de café, utilizando React, TypeScript, Vite, Tailwind CSS
 
 ## 📚 API
 
-Nesse projeto, foi utilizado a API [Sample APIs/Coffee](https://sampleapis.com/api-list/coffee) para obter as informações sobre os cafés.
+Nesse projeto, foi utilizado a API [Sample APIs/Coffee](https://sampleapis.com/api-list/coffee) para obter as informações sobre os cafés e a API [Coffee API](https://coffee.alexflipnote.dev) para pegar as imagens aleatórias de café.
 
 ## 🛠 Tecnologias
 
@@ -15,4 +15,5 @@ Nesse projeto, foi utilizado a API [Sample APIs/Coffee](https://sampleapis.com/a
 - Swiper;
 - React Spinners
 - Vite;
-- Sample APIs.
+- Sample APIs;
+- Coffee API.
