@@ -8,7 +8,7 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
 import { DotLoader } from 'react-spinners'
 import { register } from 'swiper/element/bundle'
-import { EffectCoverflow } from 'swiper/modules'
+import { EffectCards, EffectCoverflow } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import coffeeBanner from '../assets/img/coffeeBanner.jpg'
@@ -32,17 +32,35 @@ const CoffeeList = ({ loading, coffee }: any) => {
 
 	if (loading || showLoading) {
 		return (
-			<main className="m-auto flex min-h-screen items-center justify-center bg-orange-50">
+			<main className="m-auto flex min-h-screen items-center justify-center bg-orange-100">
 				<DotLoader color="#5E350E" size={100} />
 			</main>
 		)
 	}
 
 	return (
-		<main className="relative min-h-screen bg-orange-100">
+		<motion.main
+			className="relative min-h-screen bg-orange-100"
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 0.8, ease: 'easeOut' }}
+		>
 			<Parallax pages={2}>
 				<ParallaxLayer offset={0} speed={0.2} className="z-0">
-					<div className="h-150 w-full">
+					<div className="relative h-150 w-full">
+						<motion.div
+							className="absolute mt-30 ml-70 overflow-hidden"
+							initial={{ width: 0 }}
+							animate={{ width: '100%' }}
+							transition={{
+								duration: 2,
+								ease: 'easeInOut',
+							}}
+						>
+							<h1 className="font-dancing w-70 text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg">
+								COFFEE WEBSITE
+							</h1>
+						</motion.div>
 						<img src={coffeeBanner} alt="Café" className="h-full w-full object-cover" />
 					</div>
 				</ParallaxLayer>
@@ -58,7 +76,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								d="M0,160 C240,260 480,260 720,160 C960,60 1200,60 1440,160 L1440,320 L0,320 Z"
 							/>
 						</svg>
-						<div className="relative z-10 m-auto flex w-full max-w-7xl items-center overflow-hidden">
+						<div className="font-nunito relative z-10 m-auto flex w-full max-w-7xl items-center overflow-hidden">
 							<Swiper
 								modules={[EffectCoverflow]}
 								effect="coverflow"
@@ -95,6 +113,9 @@ const CoffeeList = ({ loading, coffee }: any) => {
 										<motion.div
 											className="flex w-full max-w-md cursor-grab rounded-2xl bg-amber-100 p-0"
 											whileTap={{ cursor: 'grabbing' }}
+											initial={{ opacity: 0, y: 1200 }}
+											animate={{ opacity: 1, y: 0 }}
+											transition={{ duration: 0.9, ease: 'easeOut' }}
 										>
 											<div className="w-1/2">
 												<img
@@ -106,11 +127,11 @@ const CoffeeList = ({ loading, coffee }: any) => {
 											</div>
 
 											<div className="w-1/2">
-												<h2 className="mt-4 text-center text-lg font-bold text-amber-900">
+												<h2 className="mt-4 text-center text-lg font-extrabold text-amber-900">
 													{item.title}
 												</h2>
 
-												<p className="m-3 text-justify text-xs tracking-wider text-gray-800">
+												<p className="m-3 text-justify text-xs tracking-wider text-amber-950">
 													{item.description}
 												</p>
 
@@ -134,8 +155,62 @@ const CoffeeList = ({ loading, coffee }: any) => {
 						</div>
 					</section>
 				</ParallaxLayer>
+				<ParallaxLayer
+					offset={1}
+					speed={1}
+					className="relative z-10 -mt-20 min-h-screen bg-amber-950"
+				>
+					<section>
+						<svg
+							className="absolute -top-37 left-0 h-48 w-full"
+							viewBox="0 0 1440 320"
+							preserveAspectRatio="none"
+						>
+							<path
+								fill="#451a03"
+								d="M0,160 C240,60 480,60 720,160 C960,260 1200,260 1440,160 L1440,320 L0,320 Z"
+							/>
+						</svg>
+						<div className="font-nunito relative z-10 m-auto flex w-full max-w-7xl items-center overflow-hidden">
+							<div className="w-<50/100> flex">
+								<Swiper
+									modules={[EffectCards]}
+									effect="cards"
+									slidesPerView={1}
+									grabCursor={true}
+									className="w-full"
+								>
+									{coffee.map((item: any) => (
+										<SwiperSlide key={item.id} className="flex h-auto">
+											<motion.div className="flex">
+												<div className="w-xs">
+													<img
+														draggable={false}
+														src={item.image}
+														alt={item.title}
+														className="pointer-events-none h-full w-full rounded-2xl"
+													/>
+												</div>
+											</motion.div>
+										</SwiperSlide>
+									))}
+								</Swiper>
+							</div>
+							<div className="flex">
+								<p className="font-nunito m-3 w-5xl text-justify text-4xl font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-lg">
+									De acordo com o site https://www.tuasaude.com/beneficios-do-cafe/, "O café é uma
+									bebida que promove muitos benefícios para a saúde, como prevenir o envelhecimento
+									precoce, melhorar a disposição física, evitar a depressão e ajudar no
+									emagrecimento. Esses benefícios do café são possíveis, porque essa bebida é rica
+									em compostos bioativos antioxidantes e anti-inflamatórios, como cafeína, ácido
+									clorogênico, ácido cafeico e kahweol."
+								</p>
+							</div>
+						</div>
+					</section>
+				</ParallaxLayer>
 			</Parallax>
-		</main>
+		</motion.main>
 	)
 }
 
