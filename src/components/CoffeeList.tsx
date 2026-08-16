@@ -160,7 +160,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 					speed={1}
 					className="relative z-10 -mt-20 min-h-screen bg-amber-950"
 				>
-					<section>
+					<section className="relative min-h-screen pt-32">
 						<svg
 							className="absolute -top-37 left-0 h-48 w-full"
 							viewBox="0 0 1440 320"
@@ -171,39 +171,37 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								d="M0,160 C240,60 480,60 720,160 C960,260 1200,260 1440,160 L1440,320 L0,320 Z"
 							/>
 						</svg>
-						<div className="font-nunito relative z-10 m-auto flex w-full max-w-7xl items-center overflow-hidden">
-							<div className="w-<50/100> flex">
+						<div className="font-nunito relative z-10 m-auto flex min-h-125 w-full max-w-7xl items-center gap-16 overflow-hidden px-8">
+							<div className="flex w-1/2 justify-center">
 								<Swiper
 									modules={[EffectCards]}
 									effect="cards"
 									slidesPerView={1}
+									spaceBetween={15}
 									grabCursor={true}
-									className="w-full"
+									className="h-100 w-75"
 								>
 									{coffee.map((item: any) => (
 										<SwiperSlide key={item.id} className="flex h-auto">
-											<motion.div className="flex">
-												<div className="w-xs">
-													<img
-														draggable={false}
-														src={item.image}
-														alt={item.title}
-														className="pointer-events-none h-full w-full rounded-2xl"
-													/>
-												</div>
+											<motion.div className="h-100 w-75 overflow-hidden rounded-2xl">
+												<img
+													draggable={false}
+													src={item.image}
+													alt={item.title}
+													className="pointer-events-none h-full w-full rounded-2xl object-cover"
+												/>
 											</motion.div>
 										</SwiperSlide>
 									))}
 								</Swiper>
 							</div>
-							<div className="flex">
-								<p className="font-nunito m-3 w-5xl text-justify text-4xl font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-lg">
-									De acordo com o site https://www.tuasaude.com/beneficios-do-cafe/, "O café é uma
-									bebida que promove muitos benefícios para a saúde, como prevenir o envelhecimento
-									precoce, melhorar a disposição física, evitar a depressão e ajudar no
-									emagrecimento. Esses benefícios do café são possíveis, porque essa bebida é rica
-									em compostos bioativos antioxidantes e anti-inflamatórios, como cafeína, ácido
-									clorogênico, ácido cafeico e kahweol."
+							<div className="flex w-4xl items-center">
+								<p className="font-nanito text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm">
+									"O café é uma bebida que promove muitos benefícios para a saúde, como prevenir o
+									envelhecimento precoce, melhorar a disposição física, evitar a depressão e ajudar
+									no emagrecimento. Esses benefícios do café são possíveis, porque essa bebida é
+									rica em compostos bioativos antioxidantes e anti-inflamatórios, como cafeína,
+									ácido clorogênico, ácido cafeico e kahweol."
 								</p>
 							</div>
 						</div>
