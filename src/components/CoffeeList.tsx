@@ -45,7 +45,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.8, ease: 'easeOut' }}
 		>
-			<Parallax pages={2}>
+			<Parallax pages={1.7}>
 				<ParallaxLayer offset={0} speed={0.2} className="z-0">
 					<div className="relative h-150 w-full">
 						<motion.div
@@ -64,8 +64,8 @@ const CoffeeList = ({ loading, coffee }: any) => {
 						<img src={coffeeBanner} alt="Café" className="h-full w-full object-cover" />
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={0.65} speed={1} className="z-10">
-					<section className="relative z-10 -mt-20 min-h-screen bg-orange-100 pt-32">
+				<ParallaxLayer offset={0.65} speed={1} className="z-20">
+					<section className="relative z-10 -mt-20 min-h-screen bg-orange-100 pt-52">
 						<svg
 							className="absolute -top-37 left-0 h-48 w-full"
 							viewBox="0 0 1440 320"
@@ -154,13 +154,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 							</Swiper>
 						</div>
 					</section>
-				</ParallaxLayer>
-				<ParallaxLayer
-					offset={1}
-					speed={1}
-					className="relative z-10 -mt-20 min-h-screen bg-amber-950"
-				>
-					<section className="relative min-h-screen pt-32">
+					<section className="relative z-10 min-h-screen bg-amber-950 pt-32">
 						<svg
 							className="absolute -top-37 left-0 h-48 w-full"
 							viewBox="0 0 1440 320"
@@ -195,7 +189,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 									))}
 								</Swiper>
 							</div>
-							<div className="flex w-4xl items-center">
+							<div className="rounded-base flex w-4xl items-center border-l-2 border-amber-100 pl-15">
 								<p className="font-nanito text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm">
 									"O café é uma bebida que promove muitos benefícios para a saúde, como prevenir o
 									envelhecimento precoce, melhorar a disposição física, evitar a depressão e ajudar
