@@ -166,7 +166,12 @@ const CoffeeList = ({ loading, coffee }: any) => {
 							/>
 						</svg>
 						<div className="font-nunito relative z-10 m-auto flex min-h-125 w-full max-w-7xl items-center gap-16 overflow-hidden px-8">
-							<div className="flex w-1/2 justify-center">
+							<motion.div
+								className="flex w-1/2 justify-center"
+								whileHover={{ rotate: -2, skewX: 2, scale: 1.1 }}
+								animate={{ rotate: -15, skewX: 8 }}
+								transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+							>
 								<Swiper
 									modules={[EffectCards]}
 									effect="cards"
@@ -174,6 +179,9 @@ const CoffeeList = ({ loading, coffee }: any) => {
 									spaceBetween={15}
 									grabCursor={true}
 									className="h-100 w-75"
+									cardsEffect={{
+										slideShadows: false,
+									}}
 								>
 									{coffee.map((item: any) => (
 										<SwiperSlide key={item.id} className="flex h-auto">
@@ -188,16 +196,26 @@ const CoffeeList = ({ loading, coffee }: any) => {
 										</SwiperSlide>
 									))}
 								</Swiper>
-							</div>
-							<div className="rounded-base flex w-4xl items-center border-l-2 border-amber-100 pl-15">
-								<p className="font-nanito text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm">
+							</motion.div>
+							<motion.div
+								initial={{ opacity: 0, y: -2200 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 2, ease: 'easeOut' }}
+								className="rounded-base flex w-4xl items-center border-l-2 border-amber-200 pl-15"
+							>
+								<motion.p
+									initial={{ opacity: 0, x: 2200, y: 0 }}
+									animate={{ opacity: 1, x: 0, y: 0 }}
+									transition={{ duration: 3, ease: 'easeOut' }}
+									className="font-nanito text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm"
+								>
 									"O café é uma bebida que promove muitos benefícios para a saúde, como prevenir o
 									envelhecimento precoce, melhorar a disposição física, evitar a depressão e ajudar
 									no emagrecimento. Esses benefícios do café são possíveis, porque essa bebida é
 									rica em compostos bioativos antioxidantes e anti-inflamatórios, como cafeína,
 									ácido clorogênico, ácido cafeico e kahweol."
-								</p>
-							</div>
+								</motion.p>
+							</motion.div>
 						</div>
 					</section>
 				</ParallaxLayer>
