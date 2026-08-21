@@ -45,7 +45,17 @@ const CoffeeList = ({ loading, coffee }: any) => {
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.8, ease: 'easeOut' }}
 		>
-			<Parallax pages={1.7}>
+			<div className="fixed right-8 z-50 translate-y-1/2 opacity-70">
+				<a href="https://github.com/DanielsSon12/coffee_website_project" className="github-icon">
+					<motion.img
+						src="https://skillicons.dev/icons?i=github"
+						alt="github"
+						className="w-10"
+						whileHover={{ scale: 1.2, rotate: 5 }}
+					/>
+				</a>
+			</div>
+			<Parallax pages={1.75}>
 				<ParallaxLayer offset={0} speed={0.2} className="z-0">
 					<div className="relative h-150 w-full">
 						<motion.div
@@ -65,9 +75,19 @@ const CoffeeList = ({ loading, coffee }: any) => {
 					</div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={0.65} speed={1} className="z-20">
-					<section className="relative z-10 -mt-20 min-h-screen bg-orange-100 pt-52">
+					<section className="relative z-10 -mt-10 min-h-screen bg-orange-100 pt-35 pb-90">
 						<svg
-							className="absolute -top-37 left-0 h-48 w-full"
+							className="absolute -top-50 left-0 h-50 w-full"
+							viewBox="300 55 1100 200"
+							preserveAspectRatio="none"
+						>
+							<path
+								fill="#451a03"
+								d="M0,160 C240,60 480,60 720,160 C960,260 1200,260 1440,160 L1440,320 L0,320 Z"
+							/>
+						</svg>
+						<svg
+							className="absolute -top-35 left-0 h-48 w-full"
 							viewBox="0 0 1440 320"
 							preserveAspectRatio="none"
 						>
@@ -76,6 +96,16 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								d="M0,160 C240,260 480,260 720,160 C960,60 1200,60 1440,160 L1440,320 L0,320 Z"
 							/>
 						</svg>
+						<motion.div
+							className="m-auto overflow-hidden"
+							initial={{ width: 0 }}
+							animate={{ width: '100%' }}
+							transition={{ duration: 3, ease: 'easeInOut' }}
+						>
+							<h1 className="font-dancing mb-30 text-center text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg">
+								Coffees
+							</h1>
+						</motion.div>
 						<div className="font-nunito relative z-10 m-auto flex w-full max-w-7xl items-center overflow-hidden">
 							<Swiper
 								modules={[EffectCoverflow]}
@@ -111,13 +141,13 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								{coffee.map((item: any) => (
 									<SwiperSlide key={item.id} className="flex h-auto items-center justify-center">
 										<motion.div
-											className="flex w-full max-w-md cursor-grab rounded-2xl bg-amber-100 p-0"
+											className="max-w-auto flex w-full cursor-grab rounded-2xl bg-amber-100 p-0"
 											whileTap={{ cursor: 'grabbing' }}
 											initial={{ opacity: 0, y: 1200 }}
 											animate={{ opacity: 1, y: 0 }}
 											transition={{ duration: 0.9, ease: 'easeOut' }}
 										>
-											<div className="w-1/2">
+											<div className="w-4/5">
 												<img
 													draggable={false}
 													className="pointer-events-none h-72 w-full rounded-l-2xl object-cover"
@@ -126,8 +156,8 @@ const CoffeeList = ({ loading, coffee }: any) => {
 												/>
 											</div>
 
-											<div className="w-1/2">
-												<h2 className="mt-4 text-center text-lg font-extrabold text-amber-900">
+											<div className="w-5/5">
+												<h2 className="mt-4 text-center text-lg font-bold text-amber-950 text-shadow-lg text-shadow-orange-200">
 													{item.title}
 												</h2>
 
@@ -169,8 +199,8 @@ const CoffeeList = ({ loading, coffee }: any) => {
 							<motion.div
 								className="flex w-1/2 justify-center"
 								whileHover={{ rotate: -2, skewX: 2, scale: 1.1 }}
-								animate={{ rotate: -15, skewX: 8 }}
-								transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+								animate={{ rotate: -12, skewX: 7 }}
+								transition={{ type: 'spring', stiffness: 200, damping: 25 }}
 							>
 								<Swiper
 									modules={[EffectCards]}
@@ -198,22 +228,22 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								</Swiper>
 							</motion.div>
 							<motion.div
-								initial={{ opacity: 0, y: -2200 }}
+								initial={{ opacity: 0, y: -3200 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 2, ease: 'easeOut' }}
 								className="rounded-base flex w-4xl items-center border-l-2 border-amber-200 pl-15"
 							>
 								<motion.p
-									initial={{ opacity: 0, x: 2200, y: 0 }}
-									animate={{ opacity: 1, x: 0, y: 0 }}
+									initial={{ opacity: 0, x: 3200 }}
+									animate={{ opacity: 1, x: 0 }}
 									transition={{ duration: 3, ease: 'easeOut' }}
 									className="font-nanito text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm"
 								>
-									"O café é uma bebida que promove muitos benefícios para a saúde, como prevenir o
-									envelhecimento precoce, melhorar a disposição física, evitar a depressão e ajudar
-									no emagrecimento. Esses benefícios do café são possíveis, porque essa bebida é
-									rica em compostos bioativos antioxidantes e anti-inflamatórios, como cafeína,
-									ácido clorogênico, ácido cafeico e kahweol."
+									Coffee is a beverage that promotes many health benefits, such as preventing
+									premature aging, improving physical disposition, preventing depression, and aiding
+									in weight loss. These benefits of coffee are possible because this beverage is
+									rich in antioxidant and anti-inflammatory bioactive compounds, such as caffeine,
+									chlorogenic acid, caffeic acid, and kahweol.
 								</motion.p>
 							</motion.div>
 						</div>
