@@ -2,7 +2,7 @@ import 'swiper/css'
 import 'swiper/css/bundle'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import '../index.css'
+import '../styles/index.css'
 
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
@@ -55,11 +55,11 @@ const CoffeeList = ({ loading, coffee }: any) => {
 					/>
 				</a>
 			</div>
-			<Parallax pages={1.75}>
-				<ParallaxLayer offset={0} speed={0.2} className="z-0">
-					<div className="relative h-150 w-full">
+			<Parallax pages={1.8} style={{ top: '0', left: '0' }} className="relative">
+				<ParallaxLayer offset={0} speed={0.2} className="z-10">
+					<div className="relative h-150 w-full max-lg:h-200">
 						<motion.div
-							className="absolute mt-30 ml-70 overflow-hidden"
+							className="absolute mt-30 ml-70 overflow-hidden max-lg:mt-15 max-lg:ml-20"
 							initial={{ width: 0 }}
 							animate={{ width: '100%' }}
 							transition={{
@@ -75,7 +75,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 					</div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={0.65} speed={1} className="z-20">
-					<section className="relative z-10 -mt-10 min-h-screen bg-orange-100 pt-35 pb-90">
+					<div className="relative z-10 -mt-10 max-h-screen bg-orange-100 pt-30 max-lg:-mt-140 max-lg:h-220">
 						<svg
 							className="absolute -top-50 left-0 h-50 w-full"
 							viewBox="300 55 1100 200"
@@ -102,7 +102,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 							animate={{ width: '100%' }}
 							transition={{ duration: 3, ease: 'easeInOut' }}
 						>
-							<h1 className="font-dancing mb-30 text-center text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg">
+							<h1 className="font-dancing mb-30 text-center text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg max-lg:text-7xl">
 								Coffees
 							</h1>
 						</motion.div>
@@ -183,8 +183,9 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								))}
 							</Swiper>
 						</div>
-					</section>
-					<section className="relative z-10 min-h-screen bg-amber-950 pt-32">
+					</div>
+
+					<div className="relative mt-32 bg-amber-950">
 						<svg
 							className="absolute -top-37 left-0 h-48 w-full"
 							viewBox="0 0 1440 320"
@@ -195,11 +196,11 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								d="M0,160 C240,60 480,60 720,160 C960,260 1200,260 1440,160 L1440,320 L0,320 Z"
 							/>
 						</svg>
-						<div className="font-nunito relative z-10 m-auto flex min-h-125 w-full max-w-7xl items-center gap-16 overflow-hidden px-8">
+						<div className="font-nunito relative m-auto flex max-h-screen w-full max-w-7xl items-center gap-20 overflow-hidden px-8 max-lg:h-200 max-lg:gap-10">
 							<motion.div
-								className="flex w-1/2 justify-center"
+								className="flex w-1/2 justify-center max-lg:w-2xl"
 								whileHover={{ rotate: -2, skewX: 2, scale: 1.1 }}
-								animate={{ rotate: -12, skewX: 7 }}
+								animate={{ rotate: -12, skewX: 5 }}
 								transition={{ type: 'spring', stiffness: 200, damping: 25 }}
 							>
 								<Swiper
@@ -215,7 +216,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								>
 									{coffee.map((item: any) => (
 										<SwiperSlide key={item.id} className="flex h-auto">
-											<motion.div className="h-100 w-75 overflow-hidden rounded-2xl">
+											<motion.div className="h-100 w-75 overflow-hidden rounded-2xl max-lg:h-90 max-lg:w-70">
 												<img
 													draggable={false}
 													src={item.image}
@@ -231,13 +232,13 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								initial={{ opacity: 0, y: -3200 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 2, ease: 'easeOut' }}
-								className="rounded-base flex w-4xl items-center border-l-2 border-amber-200 pl-15"
+								className="rounded-base max-lg:w-1xl m-15 flex w-4xl items-center border-l-2 border-amber-200 pl-15 max-lg:m-0"
 							>
 								<motion.p
 									initial={{ opacity: 0, x: 3200 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ duration: 3, ease: 'easeOut' }}
-									className="font-nanito text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm"
+									className="font-nanito max-lg:text-md text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm max-lg:font-black"
 								>
 									Coffee is a beverage that promotes many health benefits, such as preventing
 									premature aging, improving physical disposition, preventing depression, and aiding
@@ -247,7 +248,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								</motion.p>
 							</motion.div>
 						</div>
-					</section>
+					</div>
 				</ParallaxLayer>
 			</Parallax>
 		</motion.main>
