@@ -22,6 +22,10 @@ import withDataFetch from './DataFetchingCoffee'
 const CoffeeList = ({ loading, coffee }: any) => {
 	const [showLoading, setShowLoading] = useState(true)
 
+	const favorites = coffee?.filter((item: any) =>
+		['Latte', 'Cappuccino', 'Black Tea'].includes(item.title),
+	)
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setShowLoading(false)
@@ -55,7 +59,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 					/>
 				</a>
 			</div>
-			<Parallax pages={1.8} style={{ top: '0', left: '0' }} className="relative">
+			<Parallax pages={2.3} style={{ top: '0', left: '0' }} className="relative">
 				<ParallaxLayer offset={0} speed={0.2} className="z-10">
 					<div className="relative h-150 w-full max-lg:h-200">
 						<motion.div
@@ -102,7 +106,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 							animate={{ width: '100%' }}
 							transition={{ duration: 3, ease: 'easeInOut' }}
 						>
-							<h1 className="font-dancing mb-30 text-center text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg max-lg:text-7xl">
+							<h1 className="font-dancing mb-30 text-center text-8xl font-bold text-amber-950 max-lg:text-7xl">
 								Coffees
 							</h1>
 						</motion.div>
@@ -196,7 +200,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								d="M0,160 C240,60 480,60 720,160 C960,260 1200,260 1440,160 L1440,320 L0,320 Z"
 							/>
 						</svg>
-						<div className="font-nunito relative m-auto flex max-h-screen w-full max-w-7xl items-center gap-20 overflow-hidden px-8 max-lg:h-200 max-lg:gap-10">
+						<div className="font-nunito relative m-auto flex min-h-screen w-full max-w-7xl items-center gap-20 overflow-hidden px-8 max-lg:h-200 max-lg:gap-10">
 							<motion.div
 								className="flex w-1/2 justify-center max-lg:w-2xl"
 								whileHover={{ rotate: -2, skewX: 2, scale: 1.1 }}
@@ -228,16 +232,12 @@ const CoffeeList = ({ loading, coffee }: any) => {
 									))}
 								</Swiper>
 							</motion.div>
-							<motion.div
-								initial={{ opacity: 0, y: -3200 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 2, ease: 'easeOut' }}
-								className="rounded-base max-lg:w-1xl m-15 flex w-4xl items-center border-l-2 border-amber-200 pl-15 max-lg:m-0"
-							>
+							<div className="rounded-base max-lg:w-1xl m-15 flex w-4xl items-center border-l-2 border-amber-200 pl-15 max-lg:m-0">
 								<motion.p
-									initial={{ opacity: 0, x: 3200 }}
-									animate={{ opacity: 1, x: 0 }}
-									transition={{ duration: 3, ease: 'easeOut' }}
+									initial={{ opacity: 0, y: 100 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.8 }}
+									viewport={{ once: true }}
 									className="font-nanito max-lg:text-md text-2xl leading-relaxed font-bold tracking-wider text-amber-100 text-shadow-gray-950 text-shadow-sm max-lg:font-black"
 								>
 									Coffee is a beverage that promotes many health benefits, such as preventing
@@ -246,7 +246,53 @@ const CoffeeList = ({ loading, coffee }: any) => {
 									rich in antioxidant and anti-inflammatory bioactive compounds, such as caffeine,
 									chlorogenic acid, caffeic acid, and kahweol.
 								</motion.p>
-							</motion.div>
+							</div>
+						</div>
+					</div>
+
+					<div className="relative bg-orange-100 py-32">
+						<motion.h1
+							initial={{ opacity: 0, y: 100 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8 }}
+							viewport={{ once: true }}
+							className="font-dancing text-center text-7xl font-bold text-amber-950"
+						>
+							Our Favorites
+						</motion.h1>
+
+						<p className="font-nunito mx-auto mt-5 max-w-2xl text-center text-lg text-amber-900">
+							Discover some of our favorite drinks.
+						</p>
+
+						<div className="mx-auto mt-20 grid max-w-6xl grid-cols-1 gap-10 px-8 md:grid-cols-3">
+							{favorites.map((item: any, index: number) => (
+								<motion.div
+									key={item.id}
+									initial={{ opacity: 0, y: 100 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									transition={{
+										duration: 0.7,
+										delay: index * 0.15,
+									}}
+									viewport={{ once: true }}
+									whileHover={{
+										y: -15,
+										scale: 1.03,
+									}}
+									className="overflow-hidden rounded-2xl bg-amber-950 shadow-xl"
+								>
+									<img src={item.image} alt={item.title} className="h-64 w-full object-cover" />
+
+									<div className="p-6">
+										<h2 className="font-dancing text-4xl font-bold text-amber-100">{item.title}</h2>
+
+										<p className="font-nunito mt-3 text-sm leading-relaxed text-orange-100">
+											{item.description}
+										</p>
+									</div>
+								</motion.div>
+							))}
 						</div>
 					</div>
 				</ParallaxLayer>
