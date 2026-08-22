@@ -1,8 +1,8 @@
+import '@/styles/index.css'
 import 'swiper/css'
 import 'swiper/css/bundle'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import '../styles/index.css'
 
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
@@ -13,13 +13,13 @@ register()
 
 import { useEffect, useState } from 'react'
 
-import Banner from './Banner'
-import Benefits from './Benefits'
-import CoffeesCarrousel from './CoffeesCarrousel'
-import withDataFetch from './DataFetchingCoffee'
-import OurFavorites from './OurFavorites'
+import Banner from '../Banner/Banner'
+import Benefits from '../Benefits/Benefits'
+import CoffeesCarrousel from '../CoffeesCarrousel/CoffeesCarrousel'
+import withDataFetch from '../DataFetchingCoffee'
+import OurFavorites from '../OurFavorites/OurFavorites'
 
-const CoffeeList = ({ loading, coffee }: any) => {
+const CoffeeHome = ({ loading, coffee }: any) => {
 	const [showLoading, setShowLoading] = useState(true)
 
 	const favorites = coffee?.filter((item: any) =>
@@ -80,6 +80,6 @@ const CoffeeList = ({ loading, coffee }: any) => {
 	)
 }
 
-const CoffeeListWithData = withDataFetch(CoffeeList)
+const CoffeeHomeWithData = withDataFetch(CoffeeHome)
 
-export default CoffeeListWithData
+export default CoffeeHomeWithData

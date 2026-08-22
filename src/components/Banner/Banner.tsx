@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-import coffeeBanner from '../assets/img/coffeeBanner.jpg'
+import coffeeBanner from '@/assets/img/coffeeBanner.jpg'
 
 const Banner = () => {
 	return (
