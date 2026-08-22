@@ -13,11 +13,11 @@ register()
 
 import { useEffect, useState } from 'react'
 
-import BannerDiv from './BannerDiv'
-import BenefitsDiv from './BenefitsDiv'
+import Banner from './Banner'
+import Benefits from './Benefits'
 import CoffeesCarrousel from './CoffeesCarrousel'
 import withDataFetch from './DataFetchingCoffee'
-import OurFavoritesDiv from './OurFavoritesDiv'
+import OurFavorites from './OurFavorites'
 
 const CoffeeList = ({ loading, coffee }: any) => {
 	const [showLoading, setShowLoading] = useState(true)
@@ -63,17 +63,17 @@ const CoffeeList = ({ loading, coffee }: any) => {
 			<Parallax pages={2.8} style={{ top: '0', left: '0' }} className="relative">
 				<ParallaxLayer offset={0} speed={0.2} className="z-10">
 					{/* Banner de fundo */}
-					<BannerDiv />
+					<Banner />
 				</ParallaxLayer>
 				<ParallaxLayer offset={0.65} speed={1} className="z-20">
 					{/* Carrosel */}
 					<CoffeesCarrousel coffee={coffee} />
 
 					{/* Benefícios do Café */}
-					<BenefitsDiv coffee={coffee} />
+					<Benefits coffee={coffee} />
 
 					{/* Favoritos do Café */}
-					<OurFavoritesDiv fav={favorites} />
+					<OurFavorites fav={favorites} />
 				</ParallaxLayer>
 			</Parallax>
 		</motion.main>

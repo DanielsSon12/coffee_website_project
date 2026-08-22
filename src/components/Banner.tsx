@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 import coffeeBanner from '../assets/img/coffeeBanner.jpg'
 
-const BannerDiv = () => {
+const Banner = () => {
 	return (
 		<div className="relative h-150 w-full max-lg:h-200 max-md:h-170">
 			<motion.div
@@ -24,4 +24,4 @@ const BannerDiv = () => {
 	)
 }
 
-export default BannerDiv
+export default Banner

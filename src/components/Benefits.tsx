@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-const BenefitsDiv = ({ coffee }: { coffee: any[] }) => {
+const Benefits = ({ coffee }: { coffee: any[] }) => {
 	return (
 		<div className="relative mt-32 bg-amber-950 py-30 max-md:mt-20 max-md:py-20">
 			<svg
@@ -75,4 +75,4 @@ const BenefitsDiv = ({ coffee }: { coffee: any[] }) => {
 	)
 }
 
-export default BenefitsDiv
+export default Benefits

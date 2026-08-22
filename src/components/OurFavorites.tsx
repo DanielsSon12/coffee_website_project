@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const OurFavoritesDiv = ({ fav }: { fav: any[] }) => {
+const OurFavorites = ({ fav }: { fav: any[] }) => {
 	return (
 		<div className="relative bg-orange-100 py-32 max-md:py-20">
 			<motion.h1
@@ -56,4 +56,4 @@ const OurFavoritesDiv = ({ fav }: { fav: any[] }) => {
 	)
 }
 
-export default OurFavoritesDiv
+export default OurFavorites
