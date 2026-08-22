@@ -1,6 +1,6 @@
 # Coffee Website ☕
 
-Projeto de um Website de café, utilizando React, TypeScript, Vite, Tailwind CSS, bibliotecas de animação como Framer Motion, Swiper e React Spinners, e uma API de café. Este projeto tem como intuito testar e praticar conceitos e bibliotecas do React.
+Projeto de um Website de café responsivo, utilizando React, TypeScript, Vite, Tailwind CSS, bibliotecas de animação como Framer Motion, Swiper e React Spinners, e uma API de café. Este projeto tem como intuito testar e praticar conceitos e bibliotecas do React.
 
 ## 📚 API
 
@@ -17,6 +17,7 @@ Nesse projeto, foi utilizado a API [Sample APIs/Coffee](https://sampleapis.com/a
 - React Spring;
 - Vite;
 - Sample APIs.
+- Responsividade.
 
 ## 🔧 Instruções de Instalação
 
