@@ -8,15 +8,15 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
 import { DotLoader } from 'react-spinners'
 import { register } from 'swiper/element/bundle'
-import { EffectCards, EffectCoverflow } from 'swiper/modules'
+import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import coffeeBanner from '../assets/img/coffeeBanner.jpg'
 
 register()
 
 import { useEffect, useState } from 'react'
 
+import BannerDiv from './BannerDiv'
+import CoffeesCarrousel from './CoffeesCarrousel'
 import withDataFetch from './DataFetchingCoffee'
 
 const CoffeeList = ({ loading, coffee }: any) => {
@@ -61,138 +61,11 @@ const CoffeeList = ({ loading, coffee }: any) => {
 			</div>
 
 			<Parallax pages={2.8} style={{ top: '0', left: '0' }} className="relative">
-				{/* BANNER */}
 				<ParallaxLayer offset={0} speed={0.2} className="z-10">
-					<div className="relative h-150 w-full max-lg:h-200 max-md:h-170">
-						<motion.div
-							className="absolute mt-30 ml-70 max-lg:mt-15 max-lg:ml-20 max-md:top-20 max-md:left-1/2 max-md:ml-0 max-md:-translate-x-1/2"
-							initial={{ opacity: 0, y: 50 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{
-								duration: 1.2,
-								ease: 'easeInOut',
-							}}
-						>
-							<h1 className="font-dancing w-70 text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg max-lg:text-7xl max-md:w-60 max-md:text-6xl">
-								COFFEE WEBSITE
-							</h1>
-						</motion.div>
-
-						<img src={coffeeBanner} alt="Café" className="h-full w-full object-cover" />
-					</div>
+					<BannerDiv />
 				</ParallaxLayer>
-
-				{/* COFFEES */}
 				<ParallaxLayer offset={0.65} speed={1} className="z-20">
-					<div className="relative z-10 -mt-10 bg-orange-100 py-32 max-lg:-mt-20 max-md:-mt-10 max-md:py-20">
-						<svg
-							className="absolute -top-50 left-0 h-50 w-full max-md:-top-35 max-md:h-35"
-							viewBox="300 55 1100 200"
-							preserveAspectRatio="none"
-						>
-							<path
-								fill="#451a03"
-								d="M0,160 C240,60 480,60 720,160 C960,260 1200,260 1440,160 L1440,320 L0,320 Z"
-							/>
-						</svg>
-
-						<svg
-							className="absolute -top-35 left-0 h-48 w-full max-md:-top-25 max-md:h-30"
-							viewBox="0 0 1440 320"
-							preserveAspectRatio="none"
-						>
-							<path
-								fill="#ffedd5"
-								d="M0,160 C240,260 480,260 720,160 C960,60 1200,60 1440,160 L1440,320 L0,320 Z"
-							/>
-						</svg>
-
-						<div className="m-auto">
-							<motion.h1
-								initial={{ opacity: 0, y: 50 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true, amount: 0.2 }}
-								transition={{ duration: 0.8, ease: 'easeOut' }}
-								className="font-dancing text-center text-7xl font-bold text-amber-950 max-md:text-5xl"
-							>
-								Coffees
-							</motion.h1>
-						</div>
-
-						<div className="font-nunito relative z-10 m-auto mt-20 flex w-full max-w-7xl items-center overflow-hidden px-4 max-md:mt-12 max-md:px-6">
-							<Swiper
-								modules={[EffectCoverflow]}
-								effect="coverflow"
-								pagination={{ clickable: true }}
-								navigation
-								slidesPerView={1}
-								spaceBetween={15}
-								grabCursor={true}
-								className="w-full"
-								coverflowEffect={{
-									rotate: 25,
-									stretch: 20,
-									depth: 350,
-									modifier: 1,
-									slideShadows: false,
-								}}
-								breakpoints={{
-									751: {
-										slidesPerView: 2,
-										spaceBetween: 10,
-									},
-									1110: {
-										slidesPerView: 3,
-										spaceBetween: 15,
-									},
-								}}
-							>
-								{coffee.map((item: any) => (
-									<SwiperSlide key={item.id} className="flex items-center justify-center">
-										<motion.div
-											className="flex w-full cursor-grab flex-col overflow-hidden rounded-2xl bg-amber-100 md:w-[95%] md:flex-row"
-											whileTap={{ cursor: 'grabbing' }}
-											initial={{ opacity: 0, x: 100 }}
-											animate={{ opacity: 1, x: 0 }}
-											transition={{ type: 'spring', stiffness: 100 }}
-										>
-											<div className="w-full md:w-2/5">
-												<img
-													draggable={false}
-													className="pointer-events-none h-48 w-full object-cover md:h-72 md:rounded-l-2xl"
-													src={item.image}
-													alt={item.title}
-												/>
-											</div>
-
-											<div className="w-full md:w-3/5">
-												<h2 className="mt-3 text-center text-base font-bold text-amber-950 md:mt-4 md:text-lg">
-													{item.title}
-												</h2>
-
-												<p className="m-3 text-justify text-sm tracking-wider text-amber-950">
-													{item.description}
-												</p>
-
-												<div className="m-3">
-													<ul className="list-none">
-														{item.ingredients.map((ingredient: any) => (
-															<li
-																key={ingredient}
-																className="mt-1 text-[11px] font-bold tracking-wider text-amber-800"
-															>
-																➜ {ingredient}
-															</li>
-														))}
-													</ul>
-												</div>
-											</div>
-										</motion.div>
-									</SwiperSlide>
-								))}
-							</Swiper>
-						</div>
-					</div>
+					<CoffeesCarrousel coffee={coffee} />
 
 					{/* BENEFITS */}
 					<div className="relative mt-32 bg-amber-950 py-30 max-md:mt-20 max-md:py-20">
