@@ -8,6 +8,31 @@
 	--font-nunito: 'Nunito', sans-serif;
 }
 
+@media (max-width: 751px) {
+	.swiper-button-next,
+	.swiper-button-prev {
+		width: 28px !important;
+		height: 28px !important;
+		margin-top: -50px !important;
+	}
+
+	.swiper-pagination {
+		margin-top: 2px !important;
+	}
+}
+
+@media (max-width: 376px) {
+	.swiper-button-next,
+	.swiper-button-prev {
+		width: 24px !important;
+		height: 24px !important;
+
+		.swiper-pagination {
+			margin-top: 5px !important;
+		}
+	}
+}
+
 .swiper-button-next,
 .swiper-button-prev {
 	color: rgb(65, 34, 5) !important;

@@ -60,20 +60,20 @@ const CoffeeList = ({ loading, coffee }: any) => {
 				</a>
 			</div>
 
-			<Parallax pages={2.7} style={{ top: '0', left: '0' }} className="relative">
+			<Parallax pages={2.8} style={{ top: '0', left: '0' }} className="relative">
 				{/* BANNER */}
 				<ParallaxLayer offset={0} speed={0.2} className="z-10">
 					<div className="relative h-150 w-full max-lg:h-200 max-md:h-170">
 						<motion.div
-							className="absolute mt-30 ml-70 overflow-hidden max-lg:mt-15 max-lg:ml-20 max-md:mt-20 max-md:ml-8"
-							initial={{ width: 0 }}
-							animate={{ width: '100%' }}
+							className="absolute mt-30 ml-70 max-lg:mt-15 max-lg:ml-20 max-md:top-20 max-md:left-1/2 max-md:ml-0 max-md:-translate-x-1/2"
+							initial={{ opacity: 0, y: 50 }}
+							animate={{ opacity: 1, y: 0 }}
 							transition={{
-								duration: 2,
+								duration: 1.2,
 								ease: 'easeInOut',
 							}}
 						>
-							<h1 className="font-dancing w-70 text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg max-lg:text-7xl max-md:w-60 max-md:text-8xl max-sm:text-6xl">
+							<h1 className="font-dancing w-70 text-8xl font-bold text-orange-200 text-shadow-amber-950 text-shadow-lg max-lg:text-7xl max-md:w-60 max-md:text-6xl">
 								COFFEE WEBSITE
 							</h1>
 						</motion.div>
@@ -147,18 +147,14 @@ const CoffeeList = ({ loading, coffee }: any) => {
 									},
 								}}
 							>
-								{coffee.map((item: any, index: number) => (
+								{coffee.map((item: any) => (
 									<SwiperSlide key={item.id} className="flex items-center justify-center">
 										<motion.div
 											className="flex w-full cursor-grab flex-col overflow-hidden rounded-2xl bg-amber-100 md:w-[95%] md:flex-row"
 											whileTap={{ cursor: 'grabbing' }}
 											initial={{ opacity: 0, x: 100 }}
-											whileInView={{ opacity: 1, x: 0 }}
-											transition={{
-												duration: 0.7,
-												delay: index * 0.15,
-											}}
-											viewport={{ once: true }}
+											animate={{ opacity: 1, x: 0 }}
+											transition={{ type: 'spring', stiffness: 100 }}
 										>
 											<div className="w-full md:w-2/5">
 												<img
@@ -215,8 +211,8 @@ const CoffeeList = ({ loading, coffee }: any) => {
 							<motion.div
 								className="flex w-1/2 justify-center max-lg:w-full"
 								initial={{ opacity: 0 }}
-								whileHover={{ rotate: -2, skewX: 3, scale: 1.1 }}
-								whileInView={{ opacity: 1, rotate: -10, skewX: 2 }}
+								whileHover={{ scale: 1.1 }}
+								whileInView={{ opacity: 1 }}
 								viewport={{ once: true }}
 								transition={{
 									type: 'spring',
@@ -250,7 +246,7 @@ const CoffeeList = ({ loading, coffee }: any) => {
 								</Swiper>
 							</motion.div>
 
-							<div className="flex w-1/2 items-center border-l-2 border-amber-200 pl-12 max-lg:w-full max-lg:border-t-2 max-lg:border-l-0 max-lg:pt-10 max-md:px-2 max-md:pt-8">
+							<div className="flex w-1/2 items-center border-l border-amber-200 pl-12 max-lg:w-full max-lg:border-t-2 max-lg:border-l-0 max-lg:pt-10 max-md:px-2 max-md:pt-8">
 								<motion.p
 									initial={{ opacity: 0, y: 100 }}
 									whileInView={{ opacity: 1, y: 0 }}
