@@ -13,13 +13,15 @@ register()
 
 import { useEffect, useState } from 'react'
 
+import { useCoffee } from '@/hooks/useCoffee'
+
 import Banner from '../Banner/Banner'
 import Benefits from '../Benefits/Benefits'
 import CoffeesCarrousel from '../CoffeesCarrousel/CoffeesCarrousel'
-import withDataFetch from '../DataFetchingCoffee'
 import OurFavorites from '../OurFavorites/OurFavorites'
 
-const CoffeeHome = ({ loading, coffee }: any) => {
+const CoffeeHome = () => {
+	const { coffee, loading } = useCoffee()
 	const [showLoading, setShowLoading] = useState(true)
 
 	const favorites = coffee?.filter((item: any) =>
@@ -80,6 +82,4 @@ const CoffeeHome = ({ loading, coffee }: any) => {
 	)
 }
 
-const CoffeeHomeWithData = withDataFetch(CoffeeHome)
-
-export default CoffeeHomeWithData
+export default CoffeeHome

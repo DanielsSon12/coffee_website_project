@@ -1,4 +1,4 @@
-export default interface Coffee {
+export interface Coffee {
 	id: number
 	title: string
 	description: string

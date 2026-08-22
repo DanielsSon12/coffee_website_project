@@ -1,9 +1,9 @@
-import CoffeeHomeWithData from './components/CoffeeHome/CoffeeHome'
+import CoffeeHome from './components/CoffeeHome/CoffeeHome'
 
 function App() {
 	return (
 		<>
-			<CoffeeHomeWithData />
+			<CoffeeHome />
 		</>
 	)
 }
